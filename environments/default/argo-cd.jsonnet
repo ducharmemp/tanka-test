@@ -42,7 +42,7 @@ local k = import 'ksonnet-util/kausal.libsonnet';
                     '-c',
                   ],
                   args: [
-                    'tk show environments/${TK_ENV} --dangerous-allow-redirect ${EXTRA_ARGS}',
+                    'tk show environments/${TK_ENV} --dangerous-allow-redirect ${EXTRA_ARGS} --ext-str APP_NAME=${ARGOCD_APP_NAME} --ext-str APP_NAMESPACE=${ARGOCD_APP_NAMESPACE} --ext-str APP_REVISION=${ARGOCD_APP_REVISION}',
                   ],
                 },
               },

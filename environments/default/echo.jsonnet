@@ -7,7 +7,10 @@
 
   local deployment = $.apps.v1.deployment,
   echo_deployment:
-    deployment.new('echo', 1, [self.echo_container]),
+    deployment.new('echo', 1, [self.echo_container])
+    + deployment.mixin.metadata.withAnnotations({
+      "sha": std.extVar("APP_REVISION")
+    },),
 
   echo_service:
     $.util.serviceFor(self.echo_deployment),
